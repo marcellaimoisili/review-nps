@@ -1,6 +1,6 @@
 import { LOCATIONS } from "@/lib/locations";
 import { callClaude } from "@/lib/claude";
-import { sendSms } from "@/lib/twilio";
+import { sendSms, normalizeInboundFrom } from "@/lib/twilio";
 import {
   getConversation,
   setConversation,
@@ -19,13 +19,14 @@ function twimlResponse() {
 
 export async function POST(request: Request) {
   const formData = await request.formData();
-  const from = formData.get("From");
+  const fromRaw = formData.get("From");
   const bodyRaw = formData.get("Body");
 
-  if (typeof from !== "string" || typeof bodyRaw !== "string") {
+  if (typeof fromRaw !== "string" || typeof bodyRaw !== "string") {
     return twimlResponse();
   }
 
+  const from = normalizeInboundFrom(fromRaw);
   const body = bodyRaw.trim();
   if (!body) return twimlResponse();
 
