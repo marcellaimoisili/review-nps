@@ -10,7 +10,7 @@ type Bubble =
 const SCRIPT: Bubble[] = [
   {
     kind: "agent",
-    text: "Hi George! Thanks for choosing Cube Smart Astoria. How was your move-in? Rate 1–10 🙏",
+    text: "Hi George! Thanks for choosing CubeSmart Astoria. How was your move-in? Rate 1–10 🙏",
   },
   {
     kind: "customer",
@@ -119,7 +119,7 @@ export function PhoneMockup() {
                 C
               </div>
               <div className="flex items-center gap-1 text-[11px] font-semibold text-gray-900">
-                Cube Smart
+                CubeSmart
                 <svg
                   viewBox="0 0 20 20"
                   className="h-3 w-3 text-gray-400"
